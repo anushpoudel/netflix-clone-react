@@ -1,0 +1,38 @@
+/* Styling and positioning navbar container */
+.nav {
+  position: fixed;
+  top: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 15px;
+  height: 20px;
+  /* Navbar always stays on top of page */
+  z-index: 1;
+
+  /* Animations */
+  transition-timing-function: ease-in;
+  transition:all 0.5s;
+}
+
+/* Adds a black color on navbar */
+.nav_black {
+  background-color: #111;
+}
+
+/* Styling and positioning navbar logo */
+.nav_logo {
+  position: fixed;
+  left: 20px;
+  width: 80px;
+  object-fit: contain;
+
+}
+
+/* Styling and positioning navbar avatar */
+.nav_avatar {
+  position: fixed;
+  right: 20px;
+  width: 30px;
+  object-fit: contain;
+}
