@@ -24,7 +24,7 @@ function Row({ title, fetchUrl, isLargeRow }) {
   const opts = {
     height: "390",
     width: "100%",
-    playVars: {
+    playerVars: {
       autoplay: 1,
     },
   };
@@ -34,14 +34,14 @@ function Row({ title, fetchUrl, isLargeRow }) {
       setTrailerUrl("");
     } else {
       // Search for movie trailer full url
-      movieTrailer(movie?.name || "")
+      movieTrailer(null, {tmdbId: movie?.id})
         .then((url) => {
           // https://www.youtube.com/watch?v=aSØDÆømlsdæ
           const urlParams = new URLSearchParams(new URL(url).search); // urlParams gives us everthing after the ?
           setTrailerUrl(urlParams.get("v")); //urlParams gives us everything after v=
           // Displays error message if unable to find url
         })
-        .catch((error) => console.log(error));     
+        .catch((error) => console.log(error));
     }
   };
 
@@ -53,7 +53,9 @@ function Row({ title, fetchUrl, isLargeRow }) {
         {movies.map((movie) => (
           <img
             key={movie.id}
-            onClick={() => handleClick(movie)}
+            onClick={() => {
+              handleClick(movie)
+            }}
             className={`row_poster ${isLargeRow && "row_posterLarge"}`}
             src={`${base_url}${
               isLargeRow ? movie.poster_path : movie.backdrop_path
